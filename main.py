@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import pickle
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
@@ -42,7 +43,6 @@ pipeline = Pipeline([
     ('model', RandomForestClassifier(random_state=42))
 ])
 
-from sklearn.model_selection import cross_val_score
 
 scores = cross_val_score(pipeline, X_scaled, y, cv=5)
 
@@ -69,3 +69,6 @@ y_pred = best_model.predict(X_test)
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
 print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+
+with open("diabetes_prediction.pkl",'wb') as f:
+    pickle.dump(pipeline,f)

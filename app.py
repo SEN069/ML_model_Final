@@ -1,5 +1,9 @@
 import gradio as gr
 import numpy as np
+import joblib
+
+
+best_model = joblib.load("model.pkl")   
 
 def predict_diabetes(preg, glucose, bp, skin, insulin, bmi, dpf, age):
     input_data = np.array([[preg, glucose, bp, skin, insulin, bmi, dpf, age]])

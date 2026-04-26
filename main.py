@@ -70,5 +70,4 @@ print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
 print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
-with open("diabetes_prediction.pkl",'wb') as f:
-    pickle.dump(pipeline,f)
+joblib.dump(best_model,"diabetes_prediction.pkl")
